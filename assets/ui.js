@@ -21,7 +21,7 @@
 			var $item = $list
 				.children('li.item.editing');
 			var url = Symphony.Context.get('root')
-				+ '/symphony/extension/breadcrumb_ui/fetch_options';
+				+ '/symphony/extension/breadcrumb_ui/fetch_options/';
 			var attributes = $self.get(0).attributes;
 			var data = {};
 			
@@ -40,9 +40,9 @@
 			$.post(url, data, function(options) {
 				$.each(options, function(id, title) {
 					var $option = $('<li />')
+						.appendTo($options)
 						.attr('data-id', id)
-						.text(title)
-						.appendTo($options);
+						.text(title);
 					
 					if (id == $item.attr('data-id')) {
 						$option.addClass('selected');

@@ -8,7 +8,6 @@
 	
 	class ContentExtensionBreadcrumb_UIFetch_Options extends AdministrationPage {
 		public function view() {
-			$data = json_decode($_GET['data']);
 			$options = array();
 			
 			/**
@@ -24,7 +23,7 @@
 				'AppendBreadcrumbOptions',
 				'/extension/breadcrumb_ui/',
 				array(
-					'data'		=> $data,
+					'data'		=> $_POST,
 					'options'	=> &$options
 				)
 			);
