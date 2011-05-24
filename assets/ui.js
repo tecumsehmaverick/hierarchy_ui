@@ -20,33 +20,38 @@
 				.addClass('options');
 			var $item = $list
 				.children('li.item.editing');
+			var url = Symphony.Context.get('root')
+				+ '/symphony/extension/breadcrumb_ui/fetch_options';
+			var attributes = $self.get(0).attributes;
+			var data = {};
+			
+			// Send any "data-breadcrumb" attributes as post data:
+			$.each(attributes, function(index, attribute) {
+				if (attribute.nodeName.indexOf('data-breadcrumb-') !== 0) return;
+				
+				var name = attribute.nodeName.substring(16);
+				
+				data[name] = attribute.nodeValue;
+			});
+			
+			// Send the current breadcrumb id as post data:
+			data['location'] = $item.prev().attr('data-id');
+			
+			$.post(url, data, function(options) {
+				$.each(options, function(id, title) {
+					var $option = $('<li />')
+						.attr('data-id', id)
+						.text(title)
+						.appendTo($options);
+					
+					if (id == $item.attr('data-id')) {
+						$option.addClass('selected');
+					}
+				});
+			});
 			
 			$options.appendTo($form);
 			$form.appendTo($self);
-			
-			/**
-			 * @todo Perform an ajax request with $self.data('edit-id')
-			 */
-			
-			// Dummy children:
-			$options
-				.append('<li data-id="0">News</li>')
-				.append('<li data-id="1">Politics</li>')
-				.append('<li data-id="2">Three</li>')
-				.append('<li data-id="3">Four</li>');
-			
-			// Select current child:
-			$options
-				.find('li')
-				.each(function() {
-					var $option = $(this);
-					
-					if ($option.attr('data-id') == $item.attr('data-id')) {
-						$option.addClass('selected');
-						
-						return false;
-					}
-				});
 		})
 		
 		.live('close', function() {

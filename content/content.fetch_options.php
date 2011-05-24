@@ -29,7 +29,7 @@
 				)
 			);
 			
-			header('content-type: text/plain');
+			header('content-type: text/json');
 			echo json_encode($options); exit;
 		}
 	}
