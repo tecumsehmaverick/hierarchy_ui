@@ -5,9 +5,20 @@
 			var $list = $self.find('ol');
 			var $insert = $('<li />')
 				.addClass('insert')
-				.text('+');
+				.text('▼');
+			var $clear = $('<li />')
+				.addClass('clear')
+				.text('✕');
 			
 			$insert.appendTo($list);
+			$clear.prependTo($list);
+		})
+		
+		.live('clear', function() {
+			var $self = $(this);
+			
+			$self.find('ol.items li.item').remove();
+			$self.children('input').val('');
 		})
 		
 		.live('open', function() {
@@ -103,12 +114,20 @@
 	 */
 	$('div[data-breadcrumb] ol.items li.insert')
 		.live('click', function() {
-			var $insert = $(this);
-			var $self = $insert
-				.closest('div[data-breadcrumb]');
+			var $self = $(this).closest('div[data-breadcrumb]');
 			
 			$self.trigger('close');
 			$self.trigger('open');
+		});
+	
+	/**
+	 * Clear the selection
+	 */
+	$('div[data-breadcrumb] ol.items li.clear')
+		.live('click', function() {
+			var $self = $(this).closest('div[data-breadcrumb]');
+			
+			$self.trigger('clear');
 		});
 	
 	/**

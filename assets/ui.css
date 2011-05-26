@@ -7,7 +7,7 @@ div[data-breadcrumb] {
 div[data-breadcrumb] ol.items {
 	background: #333333;
 	color: #eeeeee;
-	height: 25px;
+	height: 26px;
 	float: left;
 	margin: 0;
 	position: relative;
@@ -17,61 +17,56 @@ div[data-breadcrumb] ol.items li {
 	cursor: default;
 	display: block;
 	float: left;
-	line-height: 25px;
-	padding: 0 15px;
+	line-height: 26px;
+	margin: 0 9px 0 -10px;
+	padding: 0 10px 0 15px;
 	position: relative;
 	z-index: 3;
 }
-
-div[data-breadcrumb] ol.items li.item + .item {
-	padding-left: 25px;
+div[data-breadcrumb] ol.items li.insert {
+	font-size: 0.8em;
 }
-div[data-breadcrumb] ol.items li.item:after {
-	background: #333333;
+div[data-breadcrumb] ol.items li:before,
+div[data-breadcrumb] ol.items li:after {
+	border-left: 1px solid #666666;
 	border-right: 1px solid #666666;
-	border-bottom: 1px solid #666666;
 	content: '';
 	display: block;
-	height: 18px;
+	height: 13px;
+	left: 0;
 	position: absolute;
-	right: -10px;
-	top: 3px;
-	transform: rotate(-45deg);
-	-moz-transform: rotate(-45deg);
-	-ms-transform: rotate(-45deg);
-	-o-transform: rotate(-45deg);
-	-webkit-transform: rotate(-45deg);
-	width: 18px;
+	right: 0;
+	transform: skewX(45deg);
+	-moz-transform: skewX(45deg);
+	-ms-transform: skewX(45deg);
+	-o-transform: skewX(45deg);
+	-webkit-transform: skewX(45deg);
+	top: 0;
+	z-index: -1;
 }
-div[data-breadcrumb] ol.items li.item:hover {
+div[data-breadcrumb] ol.items li:after {
+	bottom: 0;
+	transform: skewX(-45deg);
+	-moz-transform: skewX(-45deg);
+	-ms-transform: skewX(-45deg);
+	-o-transform: skewX(-45deg);
+	-webkit-transform: skewX(-45deg);
+	top: auto;
+}
+div[data-breadcrumb] ol.items li:hover:before,
+div[data-breadcrumb] ol.items li:hover:after {
 	background: #444444;
-	z-index: 2;
 }
-div[data-breadcrumb] ol.items li.item:hover:after {
-	background: #444444;
+div[data-breadcrumb] ol.items li:first-child {
+	padding-left: 20px;
 }
-div[data-breadcrumb] ol.items li.item:hover + .item {
-	z-index: 1;
+div[data-breadcrumb] ol.items li:last-child {
+	margin-right: -20px;
+	padding-right: 30px;
 }
-div[data-breadcrumb] ol.items li.item.editing {
-	background: #222222;
-	color: #ffffff;
-	z-index: 2;
-}
-div[data-breadcrumb] ol.items li.item.editing:after {
-	background: #222222;
-}
-div[data-breadcrumb] ol.items li.item.editing + .item {
-	z-index: 1;
-}
-
-div[data-breadcrumb] ol.items li.insert {
-	font-weight: bold;
-	padding: 0 10px 0 20px;
-	z-index: 1;
-}
-div[data-breadcrumb] ol.items li.insert:hover {
-	background: #444444;
+div[data-breadcrumb] ol.items li:last-child:before,
+div[data-breadcrumb] ol.items li:last-child:after {
+	border-right: none;
 }
 
 div[data-breadcrumb] ol.options {
@@ -79,6 +74,7 @@ div[data-breadcrumb] ol.options {
 	clear: both;
 	color: #eeeeee;
 	float: left;
+	left: -10px;
 	margin: 7px 0 0 0;
 	position: relative;
 }
@@ -88,7 +84,7 @@ div[data-breadcrumb] ol.options:before {
 	content: '';
 	display: block;
 	height: 0;
-	left: 5px;
+	left: 10px;
 	position: absolute;
 	top: -14px;
 	width: 0;
