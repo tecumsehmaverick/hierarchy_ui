@@ -18,8 +18,7 @@
 				.addClass('edit');
 			var $options = $('<ol />')
 				.addClass('options');
-			var $item = $list
-				.children('li.item.editing');
+			var $item = null;
 			var url = Symphony.Context.get('root')
 				+ '/symphony/extension/breadcrumb_ui/fetch_options/';
 			var attributes = $self.get(0).attributes;
@@ -34,8 +33,16 @@
 				data[name] = attribute.nodeValue;
 			});
 			
-			// Send the current breadcrumb id as post data:
-			data['location'] = $item.prev().attr('data-id');
+			// Pick the correct item:
+			if ($list.children('li.item.editing').length) {
+				$item = $list.children('li.item.editing');
+				data['location'] = $item.prev().attr('data-id');
+			}
+			
+			else {
+				$item = $list.children('li.item:last');
+				data['location'] = $item.attr('data-id');
+			}
 			
 			$.post(url, data, function(options) {
 				$.each(options, function(id, title) {
@@ -48,10 +55,12 @@
 						$option.addClass('selected');
 					}
 				});
+				
+				if (options != []) {
+					$options.appendTo($form);
+					$form.appendTo($self);
+				}
 			});
-			
-			$options.appendTo($form);
-			$form.appendTo($self);
 		})
 		
 		.live('close', function() {
@@ -95,24 +104,8 @@
 			var $insert = $(this);
 			var $self = $insert
 				.closest('div[data-breadcrumb]');
-			var $list = $self
-				.children('ol');
-			var $item = $('<li />')
-				.addClass('item')
-				.text('None');
 			
 			$self.trigger('close');
-			
-			// Empty item already exists:
-			if ($list.find('li.item:not([data-id])').length) {
-				$item = $list.find('li.item:not([data-id])');
-			}
-			
-			else {
-				$item.insertBefore($insert);
-			}
-			
-			$item.addClass('editing');
 			$self.trigger('open');
 		});
 	
@@ -126,12 +119,29 @@
 				.closest('div[data-breadcrumb]');
 			var $item = $self
 				.find('ol.items li.item.editing');
+			var $input = $self
+				.children('input');
 			
-			$item
-				.attr('data-id', $option.attr('data-id'))
-				.text($option.text())
-				.nextAll('li.item')
-				.remove();
+			$input
+				.val($option.attr('data-id'));
+			
+			// No item is being edited, create a new one:
+			if ($item.length == 0) {
+				$item = $('<li />')
+					.addClass('item editing')
+					.attr('data-id', $option.attr('data-id'))
+					.text($option.text())
+					.insertBefore($self.find('ol.items li:last'));
+			}
+			
+			// Update edited item:
+			else {
+				$item
+					.attr('data-id', $option.attr('data-id'))
+					.text($option.text())
+					.nextAll('li.item')
+					.remove();
+			}
 			
 			$option
 				.addClass('selected')

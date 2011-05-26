@@ -8,6 +8,8 @@
 	
 	class ContentExtensionBreadcrumb_UIFetch_Options extends AdministrationPage {
 		public function view() {
+			header('content-type: text/json');
+			
 			$options = array();
 			
 			/**
@@ -28,7 +30,6 @@
 				)
 			);
 			
-			header('content-type: text/json');
 			echo json_encode($options); exit;
 		}
 	}
