@@ -18,6 +18,7 @@
 			var $self = $(this);
 			
 			$self.find('ol.items li.item').remove();
+			$self.find('ol.options').remove();
 			$self.children('input').val('');
 		})
 		
