@@ -14,15 +14,13 @@
 			var $self = $(this);
 			var $list = $self
 				.children('ol');
-			var $form = $('<div />')
-				.addClass('edit');
 			var $options = $('<ol />')
 				.addClass('options');
 			var $item = null;
 			var url = Symphony.Context.get('root')
 				+ '/symphony/extension/breadcrumb_ui/fetch_options/';
 			var attributes = $self.get(0).attributes;
-			var data = {};
+			var data = {}, position;
 			
 			// Send any "data-breadcrumb" attributes as post data:
 			$.each(attributes, function(index, attribute) {
@@ -37,11 +35,13 @@
 			if ($list.children('li.item.editing').length) {
 				$item = $list.children('li.item.editing');
 				data['location'] = $item.prev().attr('data-id');
+				position = $item.position().left;
 			}
 			
 			else {
 				$item = $list.children('li.item:last');
 				data['location'] = $item.attr('data-id');
+				position = $list.children('li.insert').position().left;
 			}
 			
 			$.post(url, data, function(options) {
@@ -56,9 +56,11 @@
 					}
 				});
 				
-				if (options != []) {
-					$options.appendTo($form);
-					$form.appendTo($self);
+				if (options.length == undefined) {
+					$options.css({
+						'margin-left': position + 'px'
+					})
+					$options.appendTo($self);
 				}
 			});
 		})
@@ -71,7 +73,7 @@
 				.removeClass('editing');
 			
 			$self
-				.children('div.edit')
+				.children('ol.options')
 				.remove();
 		});
 	
@@ -143,10 +145,7 @@
 					.remove();
 			}
 			
-			$option
-				.addClass('selected')
-				.siblings()
-				.removeClass('selected');
+			$item.trigger('close');
 		});
 	
 	/**
