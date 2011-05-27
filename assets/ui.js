@@ -46,13 +46,13 @@
 			// Pick the correct item:
 			if ($list.children('li.item.editing').length) {
 				$item = $list.children('li.item.editing');
-				data['location'] = $item.prev().attr('data-id');
+				data['item'] = $item.prev().attr('data-id');
 				position = $item.position().left;
 			}
 			
 			else {
 				$item = $list.children('li.item:last');
-				data['location'] = $item.attr('data-id');
+				data['item'] = $item.attr('data-id');
 				position = $list.children('li.insert').position().left;
 			}
 			
