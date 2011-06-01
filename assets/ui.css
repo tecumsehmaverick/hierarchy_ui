@@ -21,7 +21,7 @@ div[data-breadcrumb] ol.items li {
 	margin: 0 9px 0 -10px;
 	padding: 0 10px 0 15px;
 	position: relative;
-	z-index: 3;
+	z-index: 1;
 }
 div[data-breadcrumb] ol.items li.insert {
 	font-size: 0.8em;
