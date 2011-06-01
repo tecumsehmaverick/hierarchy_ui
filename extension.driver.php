@@ -43,7 +43,9 @@
 		 * Add stylesheets and scripts to page header.
 		 */
 		public function appendHeaders() {
-			if (!$this->appendedHeaders && isset(Symphony::Engine()->Page)) {
+			$page = Symphony::Engine()->Page;
+
+			if (!$this->appendedHeaders && $page instanceof AdministrationPage) {
 				$page = Symphony::Engine()->Page;
 				$page->addStylesheetToHead(URL . '/extensions/breadcrumb_ui/assets/ui.css');
 				$page->addScriptToHead(URL . '/extensions/breadcrumb_ui/assets/ui.js');
