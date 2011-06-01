@@ -25,7 +25,7 @@
 				'AppendBreadcrumbOptions',
 				'/extension/breadcrumb_ui/',
 				array(
-					'data'		=> $_POST,
+					'data'		=> $_REQUEST,
 					'options'	=> &$options
 				)
 			);
