@@ -171,9 +171,8 @@
 	 */
 	$('body:has(div[data-breadcrumb] ol.options)')
 		.live('click', function() {
-			var $item = $('div[data-breadcrumb]:has(ol.options)');
-
-			$item.trigger('close');
+			$('div[data-breadcrumb]:has(ol.options)')
+				.trigger('close');
 		});
 
 	/**
@@ -182,7 +181,6 @@
 	$(document)
 		.ready(function() {
 			$('div[data-breadcrumb]')
-				.trigger('initialize')
-				//.trigger('open');
+				.trigger('initialize');
 		});
 })(jQuery);
