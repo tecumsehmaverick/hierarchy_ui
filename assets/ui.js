@@ -164,8 +164,6 @@
 					.nextAll('li.item')
 					.remove();
 			}
-			
-			//$item.trigger('close');
 		});
 	
 	/**
@@ -173,7 +171,7 @@
 	 */
 	$('body:has(div[data-breadcrumb] ol.options)')
 		.live('click', function() {
-			var $item = $('div[data-breadcrumb] ol.items li.item.editing');
+			var $item = $('div[data-breadcrumb]:has(ol.options)');
 
 			$item.trigger('close');
 		});
