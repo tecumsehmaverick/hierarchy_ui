@@ -165,9 +165,19 @@
 					.remove();
 			}
 			
-			$item.trigger('close');
+			//$item.trigger('close');
 		});
 	
+	/**
+	 * Close the options popup the body is clicked.
+	 */
+	$('body:has(div[data-breadcrumb] ol.options)')
+		.live('click', function() {
+			var $item = $('div[data-breadcrumb] ol.items li.item.editing');
+
+			$item.trigger('close');
+		});
+
 	/**
 	 * Initialize any select elements.
 	 */

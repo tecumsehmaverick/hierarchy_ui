@@ -1,7 +1,7 @@
 div[data-breadcrumb] {
 	margin: -1.3em 0 0 0;
+	min-height: 26px;
 	position: relative;
-	overflow: hidden;
 }
 
 div[data-breadcrumb] ol.items {
@@ -70,13 +70,15 @@ div[data-breadcrumb] ol.items li:last-child:after {
 }
 
 div[data-breadcrumb] ol.options {
-	background: #333333;
 	clear: both;
 	color: #eeeeee;
 	float: left;
 	left: -10px;
-	margin: 7px 0 0 0;
-	position: relative;
+	margin: 0;
+	overflow: hidden;
+	padding: 7px 0 0 0;
+	position: absolute;
+	top: 26px;
 }
 div[data-breadcrumb] ol.options:before {
 	border: 7px solid transparent;
@@ -86,10 +88,11 @@ div[data-breadcrumb] ol.options:before {
 	height: 0;
 	left: 10px;
 	position: absolute;
-	top: -14px;
+	top: -7px;
 	width: 0;
 }
 div[data-breadcrumb] ol.options li {
+	background: #333333;
 	cursor: default;
 	padding: 5px 15px;
 }
