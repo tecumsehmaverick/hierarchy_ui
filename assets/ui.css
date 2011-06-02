@@ -79,6 +79,7 @@ div[data-breadcrumb] ol.options {
 	padding: 7px 0 0 0;
 	position: absolute;
 	top: 26px;
+	z-index: 1000;
 }
 div[data-breadcrumb] ol.options:before {
 	border: 7px solid transparent;
