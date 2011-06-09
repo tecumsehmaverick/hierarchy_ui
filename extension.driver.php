@@ -16,8 +16,8 @@
 		public function about() {
 			return array(
 				'name'			=> 'Breadcrumb UI',
-				'version'		=> '0.1',
-				'release-date'	=> '2011-05-24',
+				'version'		=> '0.3',
+				'release-date'	=> '2011-06-09',
 				'author'		=> array(
 					'name'			=> 'Rowan Lewis',
 					'website'		=> 'http://rowanlewis.com/',
