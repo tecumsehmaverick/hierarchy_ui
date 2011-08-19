@@ -1,37 +1,37 @@
 <?php
-	
+
 	/**
-	 * @package breadcrumb_ui
+	 * @package hierarchy_ui
 	 */
-	
+
 	require_once TOOLKIT . '/class.administrationpage.php';
-	
-	class ContentExtensionBreadcrumb_UIFetch_Options extends AdministrationPage {
+
+	class ContentExtensionHierarchy_UIFetch_Breadcrumb_Options extends AdministrationPage {
 		public function view() {
 			header('content-type: text/json');
-			
+
 			$options = array();
-			
+
 			/**
-			* Ask other extensions to provide a list of possible breadcrumb options.
+			* Ask other extensions to provide a list of possible breadcrumb ui options.
 			*
-			* @delegate AppendAttachmentHandler
+			* @delegate AppendBreadcrumbOptions
 			* @param string $context
-			* '/extension/emailbuilder/'
+			* '/extension/hierarchy_ui/'
 			* @param string $id
 			* @param array $options
 			*/
 			Symphony::ExtensionManager()->notifyMembers(
 				'AppendBreadcrumbOptions',
-				'/extension/breadcrumb_ui/',
+				'/extension/hierarchy_ui/',
 				array(
 					'data'		=> $_REQUEST,
 					'options'	=> &$options
 				)
 			);
-			
+
 			echo json_encode($options); exit;
 		}
 	}
-	
+
 ?>

@@ -1,10 +1,10 @@
-div[data-breadcrumb] {
+div[data-breadcrumb-ui] {
 	margin: -1.3em 0 0 0;
 	min-height: 26px;
 	position: relative;
 }
 
-div[data-breadcrumb] ol.items {
+div[data-breadcrumb-ui] ol.items {
 	background: #333333;
 	color: #eeeeee;
 	height: 26px;
@@ -13,7 +13,7 @@ div[data-breadcrumb] ol.items {
 	position: relative;
 	overflow: hidden;
 }
-div[data-breadcrumb] ol.items li {
+div[data-breadcrumb-ui] ol.items li {
 	cursor: default;
 	display: block;
 	float: left;
@@ -23,11 +23,11 @@ div[data-breadcrumb] ol.items li {
 	position: relative;
 	z-index: 1;
 }
-div[data-breadcrumb] ol.items li.insert {
+div[data-breadcrumb-ui] ol.items li.insert {
 	font-size: 0.8em;
 }
-div[data-breadcrumb] ol.items li:before,
-div[data-breadcrumb] ol.items li:after {
+div[data-breadcrumb-ui] ol.items li:before,
+div[data-breadcrumb-ui] ol.items li:after {
 	border-left: 1px solid #666666;
 	border-right: 1px solid #666666;
 	content: '';
@@ -44,7 +44,7 @@ div[data-breadcrumb] ol.items li:after {
 	top: 0;
 	z-index: -1;
 }
-div[data-breadcrumb] ol.items li:after {
+div[data-breadcrumb-ui] ol.items li:after {
 	bottom: 0;
 	transform: skewX(-45deg);
 	-moz-transform: skewX(-45deg);
@@ -53,23 +53,23 @@ div[data-breadcrumb] ol.items li:after {
 	-webkit-transform: skewX(-45deg);
 	top: auto;
 }
-div[data-breadcrumb] ol.items li:hover:before,
-div[data-breadcrumb] ol.items li:hover:after {
+div[data-breadcrumb-ui] ol.items li:hover:before,
+div[data-breadcrumb-ui] ol.items li:hover:after {
 	background: #444444;
 }
-div[data-breadcrumb] ol.items li:first-child {
+div[data-breadcrumb-ui] ol.items li:first-child {
 	padding-left: 20px;
 }
-div[data-breadcrumb] ol.items li:last-child {
+div[data-breadcrumb-ui] ol.items li:last-child {
 	margin-right: -20px;
 	padding-right: 30px;
 }
-div[data-breadcrumb] ol.items li:last-child:before,
-div[data-breadcrumb] ol.items li:last-child:after {
+div[data-breadcrumb-ui] ol.items li:last-child:before,
+div[data-breadcrumb-ui] ol.items li:last-child:after {
 	border-right: none;
 }
 
-div[data-breadcrumb] ol.options {
+div[data-breadcrumb-ui] ol.options {
 	clear: both;
 	color: #eeeeee;
 	float: left;
@@ -81,7 +81,7 @@ div[data-breadcrumb] ol.options {
 	top: 26px;
 	z-index: 1000;
 }
-div[data-breadcrumb] ol.options:before {
+div[data-breadcrumb-ui] ol.options:before {
 	border: 7px solid transparent;
 	border-bottom-color: #333333;
 	content: '';
@@ -92,17 +92,17 @@ div[data-breadcrumb] ol.options:before {
 	top: -7px;
 	width: 0;
 }
-div[data-breadcrumb] ol.options li {
+div[data-breadcrumb-ui] ol.options li {
 	background: #333333;
 	cursor: default;
 	padding: 5px 15px;
 }
-div[data-breadcrumb] ol.options li + li {
+div[data-breadcrumb-ui] ol.options li + li {
 	border-top: 1px solid #555555;
 }
-div[data-breadcrumb] ol.options li:hover {
+div[data-breadcrumb-ui] ol.options li:hover {
 	background: #444444;
 }
-div[data-breadcrumb] ol.options li.selected {
+div[data-breadcrumb-ui] ol.options li.selected {
 	background: #222222;
 }
