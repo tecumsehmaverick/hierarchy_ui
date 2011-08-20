@@ -8,7 +8,7 @@ __Requirements:__ Symphony 2.2
 __Author:__ Rowan Lewis <me@rowanlewis.com>  
 __GitHub Repository:__ <http://github.com/rowan-lewis/hierarchy_ui>  
 
-![What it looks like][screenshote]
+![What it looks like][screenshot]
 
 
 ## Installation
