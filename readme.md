@@ -2,11 +2,11 @@
 
 A user interace package that provides a breadcrumb and table tree view for representing hierarchical content.
 
-__Version:__ 0.4
-__Date:__ 9 June 2011
-__Requirements:__ Symphony 2.2
-__Author:__ Rowan Lewis <me@rowanlewis.com>
-__GitHub Repository:__ <http://github.com/rowan-lewis/hierarchy_ui>
+__Version:__ 0.4  
+__Date:__ 9 June 2011  
+__Requirements:__ Symphony 2.2  
+__Author:__ Rowan Lewis <me@rowanlewis.com>  
+__GitHub Repository:__ <http://github.com/rowan-lewis/hierarchy_ui>  
 
 ![What it looks like][usage-step-three]
 
